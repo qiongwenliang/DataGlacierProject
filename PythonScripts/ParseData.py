@@ -1,5 +1,6 @@
 import csv
 import numpy as np
+import collections
 
 
 class ParseData:
@@ -30,3 +31,9 @@ class ParseData:
                     break
                 elif i == len(data_list) - 1:
                     self.data_body.append(data_list)
+
+        self.table = collections.defaultdict(list)
+
+        for i in range(len(self.title)):
+            for j in range(len(self.data_body)):
+                self.table[self.title[i]].append(self.data_body[j][i])
